@@ -9,7 +9,7 @@ int fib(int n){
 }
  ```
  
-In this project, we are allowed to design and implement gate-level datapath and controller using just 4 Actel programmable logic cells which are shown below:
+In this project, we are allowed to design and implement gate-level datapath and controller using just four Actel programmable logic cells which are shown below:
 
 
 ![Screenshot (3499)](https://user-images.githubusercontent.com/69076293/195019408-04ed9e26-534c-4b4d-89bf-059b6b497552.png)
