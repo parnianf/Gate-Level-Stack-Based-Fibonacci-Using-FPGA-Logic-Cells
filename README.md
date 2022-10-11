@@ -30,5 +30,6 @@ We implemeneted the `fib` function recursively by a stack. The implemented stack
   
   
   
-\* The controller truth table is available in the *Controller_Truth_Table.pdf*
+\* The controller truth table is available in the *Controller_Truth_Table.pdf*.
 
+Contributor: [Paria Khoshtab](https://github.com/Theparia/)
