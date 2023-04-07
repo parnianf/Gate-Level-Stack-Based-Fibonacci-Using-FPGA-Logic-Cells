@@ -1,0 +1,53 @@
+`timescale 1ns/1ns
+
+module counter10bit(input clk, rst, output reg[9:0] cnt);
+  always@(posedge clk, posedge rst) begin
+    if(rst)
+      cnt <= 10'd0;
+    else cnt <= cnt + 10'd1;
+  end
+endmodule
+
+module Fib_TB();
+  reg clk = 1'b0, clr = 1'b1, start=1'b1, rst = 1'b1;
+  reg [2:0] N = 3'd0;
+  wire[9:0] clock_cnt;
+  wire done;
+  wire [4:0] result;
+  integer i, f;
+  always #12 clk = ~clk;
+  reg [4:0] expected [0:7];
+  initial begin
+    expected[0] = 5'd1;
+    expected[1] = 5'd1;
+    expected[2] = 5'd2;
+    expected[3] = 5'd3;
+    expected[4] = 5'd5;
+    expected[5] = 5'd8;
+    expected[6] = 5'd13;
+    expected[7] = 5'd21;
+  end
+  counter10bit cnt10b(clk, clr, clock_cnt);
+  Fib CUT(N, clk, clr, start, done, result);
+  initial begin
+    f = $fopen("result.txt", "w+");
+  end
+  initial begin
+    for (i = 0; i < 8; i = i + 1) begin 
+      N = i;
+      #12 rst=1'b0;
+      #12 clr = 1'b0;
+      #12 start = 1'b1;
+      #12 start = 1'b0;
+      #6000 
+      if(result == expected[i])
+        $fwrite(f,"%d, %d, %d, true\n", N, result, expected[i]);
+      else
+        $fwrite(f,"%d, %d, %d, false\n", N, result, expected[i]);
+      clr = 1'b1; start = 1'b1;
+    end
+    $fclose(f);  
+    #5000 $stop;
+  end 
+
+endmodule
