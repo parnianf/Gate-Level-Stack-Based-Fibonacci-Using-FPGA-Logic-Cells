@@ -27,9 +27,19 @@ We implemeneted the `fib` function recursively by a stack. The implemented stack
   * is_empty: is true if the stack is empty.
   
   
-  
-  
-  
+<br></br>
+\* Verilog codes for this project can be found in *trunk/src/hdl*.
+
+\* Testbench is in *trunk/sim/tb*.
+
 \* The controller truth table is available in the *Controller_Truth_Table.pdf*.
+
+### How to run?
+To run the tcl script file, use this command in the *trunk/sim* path (in Modelsim): 
+```
+do sim_top.tcl
+```
+
+<br></br>
 
 Contributor: [Paria Khoshtab](https://github.com/Theparia/)
